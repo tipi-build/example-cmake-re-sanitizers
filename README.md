@@ -22,5 +22,5 @@ cmake-re --build build/prebuilt-deps --run-test main
 ```sh
 cd 02-fully-instrumented/
 cmake-re -S . -B build/fully-instrumented -DCMAKE_TOOLCHAIN_FILE=environments/linux-ubuntu-2404-clang20-msan.cmake
-cmake-re --build build/fully-instrumente --run-test main 
+cmake-re --build build/fully-instrumented --run-test main 
 ```

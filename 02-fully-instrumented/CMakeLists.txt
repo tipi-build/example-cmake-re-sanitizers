@@ -21,18 +21,20 @@ add_link_options(
 )
 
 # BEGIN - HFC Initialization
+set(FETCHCONTENT_QUIET OFF)
+include(FetchContent)
+
 set(hfc_REPOSITORY https://github.com/tipi-build/hfc)
-set(hfc_REVISION main)
+set(hfc_REVISION 42180f1fb49d5301b1167947335e54ebe76f2573)
 
 include(HermeticFetchContent OPTIONAL RESULT_VARIABLE hfc_included) 
 if(NOT hfc_included)
-  FetchContent_Populate(
-    42180f1fb49d5301b1167947335e54ebe76f2573
+  FetchContent_Populate(hfc
     GIT_REPOSITORY https://github.com/tipi-build/hfc.git
     GIT_TAG ${hfc_REVISION}
-    SOURCE_DIR "${PROJECT_SOURCE_DIR}/thirdparty/cache/hfc/src"
-    SUBBUILD_DIR "${PROJECT_SOURCE_DIR}/thirdparty/cache/hfc/subbuild"
-    BINARY_DIR "${PROJECT_SOURCE_DIR}/thirdparty/cache/hfc/bin"
+    SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/cache/hfc-${hfc_REVISION}/src"
+    SUBBUILD_DIR "${CMAKE_CURRENT_LIST_DIR}/cache/hfc-${hfc_REVISION}/subbuild"
+    BINARY_DIR "${CMAKE_CURRENT_LIST_DIR}/cache/hfc-${hfc_REVISION}/bin"
   )
   FetchContent_GetProperties(hfc)
   message(STATUS "Hermetic FetchContent ${hfc_REVISION} available at '${hfc_SOURCE_DIR}'")
