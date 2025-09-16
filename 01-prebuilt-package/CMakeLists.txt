@@ -20,7 +20,9 @@ add_link_options(
   -fsanitize-ignorelist=${msan_ignore_list_path}
 )
 
-add_executable(main test/main.cpp)
-target_link_libraries(main)
+find_package(compute_array_sum REQUIRED)
 
-add_test(NAME main COMMAND ${CMAKE_CROSSCOMPILING_EMULATOR} $<TARGET_FILE:main> )
+add_executable(main test/main.cpp)
+target_link_libraries(main compute_array_sum::compute_array_sum)
+
+add_test(NAME main COMMAND ${CMAKE_CROSSCOMPILING_EMULATOR} $<TARGET_FILE:main>)
