@@ -23,4 +23,14 @@ cmake-re --build build/prebuilt-deps --run-test main
 cd 02-fully-instrumented/
 cmake-re -S . -B build/fully-instrumented -DCMAKE_TOOLCHAIN_FILE=environments/linux-ubuntu-2404-clang20-msan.cmake
 cmake-re --build build/fully-instrumented --run-test main 
+
+cmake-re -DCMAKE_BUILD_TYPE=Release -S . -B build/fully-instrumented-rel -DCMAKE_TOOLCHAIN_FILE=environments/linux-ubuntu-2404-clang20-msan.cmake
+cmake-re --build build/fully-instrumented-rel --run-test main 
+```
+
+## Valgrind
+```sh
+cd 03-valgrind/
+cmake-re -S . -B build/valgrind -DCMAKE_TOOLCHAIN_FILE=environments/linux-ubuntu-2404-clang20.cmake -DCMAKE_CROSSCOMPILING=ON -DCMAKE_CROSSCOMPILING_EMULATOR="/usr/bin/valgrind;--track-origins=yes"
+cmake-re --build build/valgrind --run-test main 
 ```
