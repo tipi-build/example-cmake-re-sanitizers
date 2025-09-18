@@ -9,21 +9,20 @@ This project is an example repository with predefined CMAKE_TOOLCHAIN_FILE and `
 ## MSan - MemorySanitizer `-DCMAKE_TOOLCHAIN_FILE=environments/linux-ubuntu-2404-clang20-msan.cmake`
 Detects use of uninitialized memory, **features a fully-instrumented libc++ 🪄**.
 
-👉 `cmake-re -S . -B build/msan -DCMAKE_TOOLCHAIN_FILE=environments/linux-ubuntu-2404-clang20-msan.cmake`
-️🔍 `cmake-re --build build/msan --run-test main`
+* 👉 `cmake-re -S . -B build/msan -DCMAKE_TOOLCHAIN_FILE=environments/linux-ubuntu-2404-clang20-msan.cmake`
+* ️🔍 `cmake-re --build build/msan --run-test main`
 
 ## ASan + LSan + UBSan `-DCMAKE_TOOLCHAIN_FILE=environments/linux-ubuntu-2404-clang20-asan-ubsan.cmake`
-AdressSanitizer + LeakSanitizer + UndefinedBehaviourSanitizer
-- Detects use-after-free, overflow, use-after-scope...
-- Detects nullptr dereference, integer overflow
+AdressSanitizer + LeakSanitizer detects use-after-free, overflow, use-after-scope...
+UndefinedBehaviourSanitizer detects nullptr dereference, integer overflow
 
-👉 ️`cmake-re -S . -B build/asan-ubsan -DCMAKE_TOOLCHAIN_FILE=environments/linux-ubuntu-2404-clang20-asan-ubsan.cmake`
-️🔍 `cmake-re --build build/asan-ubsan --run-test main`
+* 👉 ️`cmake-re -S . -B build/asan-ubsan -DCMAKE_TOOLCHAIN_FILE=environments/linux-ubuntu-2404-clang20-asan-ubsan.cmake`
+* ️🔍 `cmake-re --build build/asan-ubsan --run-test main`
 
 
 ## TSan - ThreadSanitizer `-DCMAKE_TOOLCHAIN_FILE=environments/linux-ubuntu-2404-clang20-tsan.cmake`
-👉 `cmake-re -S . -B build/asan-ubsan -DCMAKE_TOOLCHAIN_FILE=environments/linux-ubuntu-2404-clang20-tsan.cmake`
-️🔍 `cmake-re --build build/asan-ubsan --run-test main`
+* 👉 `cmake-re -S . -B build/asan-ubsan -DCMAKE_TOOLCHAIN_FILE=environments/linux-ubuntu-2404-clang20-tsan.cmake`
+️* 🔍 `cmake-re --build build/asan-ubsan --run-test main`
 
 
 ### Commands for Demo at CppCon2025
