@@ -5,7 +5,8 @@
 
 int main() {
   int x;
-  int y = x + 1;
+  int w = 0;
+  int y = x + 1 / w;
 
   std::array<int,10> arr;
   arr[5] = y;
