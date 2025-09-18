@@ -25,4 +25,4 @@ find_package(compute_array_sum REQUIRED)
 add_executable(main test/main.cpp)
 target_link_libraries(main compute_array_sum::compute_array_sum)
 
-add_test(NAME main COMMAND ${CMAKE_CROSSCOMPILING_EMULATOR} $<TARGET_FILE:main>)
+add_test(NAME main COMMAND ${CMAKE_TEST_LAUNCHER} $<TARGET_FILE:main>)

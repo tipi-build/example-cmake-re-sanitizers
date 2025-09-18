@@ -14,8 +14,18 @@ export RBE_tls_client_auth_cert=$HOME/engflow-mTLS-glass/engflow.crt
 ## Prebuilt not fully instrumented
 ```sh
 cd 01-prebuilt-package/
+cmake-re -S . -B build/prebuilt-deps-release -DCMAKE_TOOLCHAIN_FILE=environments/linux-ubuntu-2404-clang20-prebuilt.cmake -DCMAKE_BUILD_TYPE=Release
+cmake-re --build build/prebuilt-deps-release --run-test main
+
 cmake-re -S . -B build/prebuilt-deps -DCMAKE_TOOLCHAIN_FILE=environments/linux-ubuntu-2404-clang20-prebuilt.cmake
 cmake-re --build build/prebuilt-deps --run-test main
+```
+
+### Valgrind on pre-built
+```sh
+cd 01-prebuilt-package/
+cmake-re -S . -B build/valgrind-prebuilt -DCMAKE_TOOLCHAIN_FILE=environments/linux-ubuntu-2404-clang20-prebuilt.cmake -DCMAKE_TEST_LAUNCHER="/usr/bin/valgrind;--track-origins=yes"
+cmake-re --build build/valgrind-prebuilt --run-test main 
 ```
 
 ## From source fully instrumented
@@ -28,9 +38,9 @@ cmake-re -DCMAKE_BUILD_TYPE=Release -S . -B build/fully-instrumented-rel -DCMAKE
 cmake-re --build build/fully-instrumented-rel --run-test main 
 ```
 
-## Valgrind
+### From source clang-tidy
 ```sh
-cd 03-valgrind/
-cmake-re -S . -B build/valgrind -DCMAKE_TOOLCHAIN_FILE=environments/linux-ubuntu-2404-clang20.cmake -DCMAKE_CROSSCOMPILING=ON -DCMAKE_CROSSCOMPILING_EMULATOR="/usr/bin/valgrind;--track-origins=yes"
-cmake-re --build build/valgrind --run-test main 
+cmake-re -S . -B build/tidy -DCMAKE_TOOLCHAIN_FILE=environments/linux-ubuntu-2404-clang20-tidy.cmake
+cmake-re --build build/tidy 
 ```
+

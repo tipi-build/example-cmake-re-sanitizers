@@ -57,4 +57,4 @@ HermeticFetchContent_MakeAvailableAtBuildTime(compute_array_sum)
 add_executable(main test/main.cpp)
 target_link_libraries(main compute_array_sum::compute_array_sum)
 
-add_test(NAME main COMMAND ${CMAKE_CROSSCOMPILING_EMULATOR} $<TARGET_FILE:main>)
+add_test(NAME main COMMAND $<TARGET_FILE:main>)
